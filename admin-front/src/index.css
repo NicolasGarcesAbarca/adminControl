@@ -1,70 +1,262 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* get the local ttf fonts*/
+@font-face {
+  font-family: "NunitoSans";
+  src: url(./fonts/NunitoSans-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-a:hover {
-  color: #535bf2;
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url(./fonts/NunitoSans-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url(./fonts/NunitoSans-BoldItalic.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url(./fonts/NunitoSans-Light.ttf) format("truetype");
+  font-weight: light;
+  font-style: normal;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  font-family: "NunitoSans", sans-serif;
+}
+/*app container */
+.app-container{
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+}
+/*navbar*/
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(96, 71, 235);
+  color: white;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.nav__ul {
+  display: flex;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.nav__logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-button:hover {
-  border-color: #646cff;
+.nav__ul__li {
+  margin-left: 10px;
+  padding: 5px;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.nav__ul__li__link{
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+/* forms */
+
+.form {
+  display: flex;  
+  flex-direction: column;
+}
+.MyTextInput__container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.MyTextInput__input{
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 4px;
+  font-size: 1.2rem;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.MyTextInput__label{
+  color:rgb(100, 100, 100)
+}
+.MyTextInput__error{
+  color:rgb(219, 51, 51);
+  font-size: small;
+}
+/* card */
+
+.card {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.card--dark{
+  background-color: hsl(220, 50%, 70%);
+}
+.card--w60 {
+  width: 60%;
+}
+
+/* button */
+.button{
+  background-color: hsl(260,60%,50%);
+  border-radius: 10px;
+  padding:10px;
+  color: white;
+  border-style: none;
+}
+
+.button--danger{
+  background-color: hsl(20,60%,50%);
+  font-weight: 700;
+}
+
+/* Login page */
+.LoginPage__container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
 }
