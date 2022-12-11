@@ -3,8 +3,7 @@ import { MyTextInput } from './CustomInputs';
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom'
-
-
+import { useToast } from '@chakra-ui/react'
 
 interface IValues {
     emailx: any;
@@ -36,7 +35,7 @@ const validate = (values: IValues): any => {
 
 export const Login = () => {
     const navigation = useNavigate()
-
+    const toast = useToast()
     async function submitLogin(values: IValues, setSubmitting): Promise<void> {
         const { emailx, passwordx } = values;
         console.log("login", emailx)
@@ -45,8 +44,14 @@ export const Login = () => {
             setSubmitting(false)
             //TODO insert toast
             console.log(userCredential)
-
-            navigation('/',{state:1})
+            toast({
+                title: 'Login existoso.',
+                description: "Ahora puedes ingresar.",
+                status: 'success',
+                duration: 1000,
+                isClosable: true,
+            })
+            navigation('/', { state: 1 })
         } catch (e) {
             //TODO insert toast error
             console.log(e)

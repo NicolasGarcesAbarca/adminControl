@@ -1,0 +1,11 @@
+name: hi
+  on: 
+    push:
+      branches:
+        -master
+jobs:
+  hellw:
+    runs-on: ubuntu-18.04
+    steps:
+      -name:echo
+      run: echo "hi repo"
