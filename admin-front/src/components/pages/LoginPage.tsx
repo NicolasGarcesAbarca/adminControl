@@ -7,7 +7,7 @@ export function LoginPage() {
     const user = useContext(userContext)
     return (
         <div className='LoginPage__container'>
-            {user ? <p>you are {user.email}</p>:<Login />}
+            {user ? <p>you are {user.email} </p>:<Login />}
             
         </div>
     )

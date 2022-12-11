@@ -11,6 +11,7 @@ import User from './components/admin/users';
 import ErrorPage from './ErrorPage';
 import { LoginPage } from './components/pages/LoginPage';
 import { ProvideUser } from './hooks/user';
+import { ChakraProvider } from '@chakra-ui/react'
 
 const router = createBrowserRouter([
   {
@@ -38,8 +39,10 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ProvideUser>
-      <RouterProvider router={router} />
-    </ProvideUser>
+    <ChakraProvider>
+      <ProvideUser>
+        <RouterProvider router={router} />
+      </ProvideUser>
+    </ChakraProvider >
   </React.StrictMode>
 )
