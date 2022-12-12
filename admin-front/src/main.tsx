@@ -12,6 +12,7 @@ import ErrorPage from './ErrorPage';
 import { LoginPage } from './components/pages/LoginPage';
 import { ProvideUser } from './hooks/user';
 import { ChakraProvider } from '@chakra-ui/react'
+import { AllowOnlyAdmin } from './components/pages/AllowOnlyAdmin';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "admin/",
-        element: <Admin />,
+        element: <AllowOnlyAdmin><Admin /></AllowOnlyAdmin>,
         children: [
           {
             path: "user/",
