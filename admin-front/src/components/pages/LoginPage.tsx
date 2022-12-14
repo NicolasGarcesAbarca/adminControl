@@ -4,7 +4,7 @@ import { userContext } from '../../hooks/user'
 
 
 export function LoginPage() {
-    const user = useContext(userContext)
+    const {user,userIsLoading} = useContext(userContext)
     return (
         <div className='LoginPage__container'>
             {user ? <p>you are {user.email} </p>:<Login />}
