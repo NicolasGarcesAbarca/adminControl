@@ -1,41 +1,40 @@
 import { Link } from "react-router-dom";
-import { navItems } from '../ProjectConstants';
 import { userContext } from "../hooks/user";
 import { useContext } from "react";
 
-export default function Navbar() {
-    const user = useContext(userContext)
-    if (user?.role === 'user') {
-        return (
-            <header className="nav" >
-                <div className="nav__logo">
-                    <p>LOGO</p>
-                </div>
-                <nav>
-                    <ul className="nav__ul">
-                        {navItems.map(x => (
-                            <li key={x.path} className="nav__ul__li">
-                                <Link className="nav__ul__li__link" to={x.path}>{x.name}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-            </header >
-        )
-    } else {
-        return (
-            <header className="nav" >
-                <div className="nav__logo">
-                    <p>LOGO</p>
-                </div>
-                <nav>
-                    <ul className="nav__ul">
-                        <li className="nav__ul__li">
-                            <Link className="nav__ul__li__link" to='/admin'>admin rol</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </header >
-        )
+function UlbyRole({ role }: { role: string }) {
+    let items = [
+        { name: 'Home', path: '/' },
+        { name: 'LogIn', path: '/login' }]
+
+    if (role) {
+        if (role === 'admin') {
+            items = [...items, { name: 'userc', path: '/admin/user' }]
+        } else if (role === 'user') {
+            items = [...items, { name: 'userc', path: '/admin/user' }]
+        }
     }
+
+    return <ul className="nav__ul">
+        {items.map(x => (
+            <li key={x.path} className="nav__ul__li">
+                <Link className="nav__ul__li__link" to={x.path}>{x.name}</Link>
+            </li>
+        ))}
+    </ul>
+}
+
+export default function Navbar() {
+    const { user } = useContext(userContext)
+    const role = user ? (user.role? user.role:'') : ''
+    return (
+        <header className="nav" >
+            <div className="nav__logo">
+                <p>LOGO</p>
+            </div>
+            <nav>
+                <UlbyRole role={role} />
+            </nav>
+        </header >
+    )
 }
