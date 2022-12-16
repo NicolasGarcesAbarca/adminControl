@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useEffect, useState, useContext } from "react"
 import { userContext } from "../../hooks/user"
-import { z } from 'zod'
 import ListUser from "./listUser"
+import { Box } from '@chakra-ui/react'
 
 export interface UserAPI {
     uid: string,
@@ -50,8 +50,8 @@ export default function User() {
     if (error) return <p>Error</p>
     if (loading) return <p>Loading...</p>
     return (<>{users ?
-        <div>
+        <Box>
             <ListUser users={users} />
-        </div> :
+        </Box> :
         <p>No users</p>}</>)
 }

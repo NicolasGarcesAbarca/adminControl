@@ -9,9 +9,9 @@ function UlbyRole({ role }: { role: string }) {
 
     if (role) {
         if (role === 'admin') {
-            items = [...items, { name: 'userc', path: '/admin/user' }]
+            items = [...items, { name: 'list', path: '/admin/user' },{ name: 'create', path: '/admin/createuser' }]
         } else if (role === 'user') {
-            items = [...items, { name: 'userc', path: '/admin/user' }]
+            items = [...items, { name: 'user', path: '/admin/' }]
         }
     }
 

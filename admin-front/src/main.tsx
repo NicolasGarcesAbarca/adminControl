@@ -10,6 +10,7 @@ import Admin from './components/admin/admin';
 import User from './components/admin/users';
 import ErrorPage from './ErrorPage';
 import { LoginPage } from './components/pages/LoginPage';
+import { CreateUser } from './components/pages/CreateUser';
 import { ProvideUser } from './hooks/user';
 import { ChakraProvider,extendTheme } from '@chakra-ui/react'
 import { AllowOnlyAdmin } from './components/pages/AllowOnlyAdmin';
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
           {
             path: "user/",
             element: <User />
+          },
+          {
+            path: "createuser/",
+            element: <CreateUser />
           }
         ]
       },

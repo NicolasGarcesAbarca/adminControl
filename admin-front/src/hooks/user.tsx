@@ -66,6 +66,7 @@ export function ProvideUser(props: TT) {
             onAuthStateChanged(auth, async (fbUser) => {
                 if (fbUser) {
                     const validUser = Usr.parse(fbUser)
+                    console.log(validUser.accessToken)
                     const idTokenResult = await fbUser.getIdTokenResult(true);
                     if (idTokenResult.claims.role) {
                         validUser.role = idTokenResult.claims.role;

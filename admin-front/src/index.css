@@ -225,6 +225,17 @@ body {
   color:rgb(219, 51, 51);
   font-size: small;
 }
+
+.MyTextInput__button{
+  border:1px solid rgb(180, 180, 180);
+  cursor: pointer;
+  border-radius: 4px;
+  width: 40px;
+}
+
+.MyTextInput__button:hover{
+  background-color: rgb(170, 92, 92);
+}
 /* card */
 
 .card {

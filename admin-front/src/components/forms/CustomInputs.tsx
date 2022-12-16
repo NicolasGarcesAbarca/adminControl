@@ -45,15 +45,38 @@ export const MySelect = ({ label, ...props }) => {
     );
 };
 
-// export const PasswordInput = ({ label, ...props }) => {
-//     const [field, meta] = useField(props);
-//     return (
-//         <div className='MyTextInput__container'>
-//             <label className='MyTextInput__label' htmlFor={props.id || props.name}>{label}</label>
-//             <input className="form__text-input" {...field} {...props} />
-//             {meta.touched && meta.error ? (
-//                 <p className="MyTextInput__error">{meta.error}</p>
-//             ) : null}
-//         </div>
-//     );
-// };
+export const RutInput = ({ label, ...props }) => {
+    const { name, type, ruts, setruts } = props
+    const [field, meta] = useField({ name, type });
+    const { value, onBlur, onChange } = field;
+
+    function handleClick() {
+        return () => {
+            setruts(x => [...x, value])
+            onChange({ target: { name, value: ' ' } })
+        }
+    }
+
+    return (
+        <div className='MyTextInput__container'>
+            <label className='MyTextInput__label' htmlFor={props.id || props.name}>{label}</label>
+            <div>
+                <input
+                    className="MyTextInput__input"
+                    value={value}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    type={type}
+                    name={name}
+                />
+                <button className="MyTextInput__button" type='button' onClick={handleClick()}>+</button>
+            </div>
+            {meta.touched && meta.error ? (
+                <p className="MyTextInput__error">{meta.error}</p>
+            ) : null}
+            <ul>
+                {ruts.map((rut, index) => <li key={index}>{rut}</li>)}
+            </ul>
+        </div>
+    );
+};

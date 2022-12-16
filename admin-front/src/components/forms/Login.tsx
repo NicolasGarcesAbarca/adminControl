@@ -38,7 +38,6 @@ export const Login = () => {
     const toast = useToast()
     async function submitLogin(values: IValues, setSubmitting): Promise<void> {
         const { emailx, passwordx } = values;
-        console.log("login", emailx)
         try {
             const userCredential = await signInWithEmailAndPassword(auth, emailx, passwordx);
             setSubmitting(false)
