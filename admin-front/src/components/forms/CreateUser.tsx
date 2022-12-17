@@ -26,6 +26,7 @@ interface IErrors {
 
 export const CreateUserForm = () => {
     //use state for list ruts management
+    
     const [ruts, setRuts] = useState<Array<string>>([]);
     const toast = useToast();
     //get user from context
@@ -59,7 +60,6 @@ export const CreateUserForm = () => {
     async function createUser(values: IValues, actions: FormikHelpers<IValues>): Promise<void> {
         const { displayName, email, password} = values;
         const url = 'http://127.0.0.1:5001/remind23451/us-central1/api/users'
-        console.log("..fetch")
         const accessToken = user ? user.accessToken : '';
         const data = { displayName, email, password ,ruts}
         const config = {
@@ -115,11 +115,13 @@ export const CreateUserForm = () => {
                     label="Password"
                     name="password"
                     type="password"
+                    placeholder='********'
                 />
                 <MyTextInput
                     label="Repite password"
                     name="password2"
                     type="password"
+                    placeholder='********'
                 />
                 <RutInput
                     label="Ingrese rut"

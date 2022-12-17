@@ -1,51 +1,42 @@
-import axios from "axios"
-import { useEffect, useState, useContext } from "react"
-import { userContext } from "../../hooks/user"
+import { useEffect, useState } from "react"
 import ListUser from "./listUser"
 import { Box } from '@chakra-ui/react'
-
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 export interface UserAPI {
     uid: string,
-    name: string,
+    displayName: string,
     email: string,
-    role: string,
-    lastSignInTime: string,
-    creationTime: string,
+    ruts: Array<string>,
 }
 
 const URL = "http://127.0.0.1:5001/remind23451/us-central1/api/users"
 export default function User() {
-    const { user, userIsLoading } = useContext(userContext)
-    const [users, setUsers] = useState < Array<UserAPI>>([])
+    const [users, setUsers] = useState<Array<UserAPI>>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
-    let config: any = null
-    if (user) {
-        config = {
-            headers: { Authorization: `Bearer ${user.accessToken}` }
-        };
-    }
+
     useEffect(() => {
+        console.log("useEffect")
         const getUsers = async () => {
             setError(false)
             setLoading(true)
             try {
-                const { data } = await axios.get(URL, config)
-                //creationTime string
-                //displayName: string
-                //email: string
-                //lastSignInTime string
-                //role string
-                //uid string
-                setUsers(data.users)
+                const q = query(collection(db, "users"));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    setUsers((users) => [...users, doc.data() as UserAPI])
+                });
             } catch (e) {
                 setError(true)
             } finally {
                 setLoading(false)
             }
         }
+        console.log("getUsers")
         getUsers()
-    }, [user])
+    }, [])
 
     if (error) return <p>Error</p>
     if (loading) return <p>Loading...</p>

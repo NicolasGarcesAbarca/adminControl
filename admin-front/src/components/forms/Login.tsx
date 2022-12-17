@@ -1,4 +1,4 @@
-import { Formik, Form } from 'formik';
+import { Formik, Form , FormikHelpers} from 'formik';
 import { MyTextInput } from './CustomInputs';
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase';
@@ -16,7 +16,7 @@ interface IErrors {
 }
 
 const validate = (values: IValues): any => {
-    const errors: IErrors = {};
+    const errors: IErrors = {} as IErrors;
 
     if (!values.emailx) {
         errors.emailx = 'Debes ingresar mail';
@@ -36,11 +36,11 @@ const validate = (values: IValues): any => {
 export const Login = () => {
     const navigation = useNavigate()
     const toast = useToast()
-    async function submitLogin(values: IValues, setSubmitting): Promise<void> {
+    async function submitLogin(values: IValues, actions: FormikHelpers<IValues>): Promise<void> {
         const { emailx, passwordx } = values;
         try {
             const userCredential = await signInWithEmailAndPassword(auth, emailx, passwordx);
-            setSubmitting(false)
+            actions.setSubmitting(false)
             //TODO insert toast
             console.log(userCredential)
             toast({
@@ -60,8 +60,8 @@ export const Login = () => {
     return (
         <Formik initialValues={{ emailx: '', passwordx: '' }}
             validate={validate}
-            onSubmit={(values, { setSubmitting }) => {
-                submitLogin(values, setSubmitting)
+            onSubmit={(values,actions) => {
+                submitLogin(values, actions)
             }}
         >
             <Form>
@@ -75,12 +75,8 @@ export const Login = () => {
                     label="Password"
                     name="passwordx"
                     type="password"
+                    placeholder="********"
                 />
-                {/* <MyTextInput
-                    label="Repite password"
-                    name="password2"
-                    type="password"
-                /> */}
                 <button className="button" type="submit">LogIn</button>
             </Form>
         </Formik>

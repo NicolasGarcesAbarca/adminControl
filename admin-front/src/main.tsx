@@ -61,5 +61,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <RouterProvider router={router} />
       </ProvideUser>
     </ChakraProvider >
-  </React.StrictMode>
+  </React.StrictMode> 
 )

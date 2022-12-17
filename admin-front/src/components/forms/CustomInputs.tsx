@@ -1,10 +1,18 @@
 import { useField } from 'formik';
 
-export const MyTextInput = ({ label, ...props }) => {
+interface MyTextInputProps {
+    label: string;
+    name: string;
+    type: string;
+    placeholder: string;
+}
+type MyTextInput=(props: MyTextInputProps) => JSX.Element
+
+export const MyTextInput:MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
         <div className='MyTextInput__container'>
-            <label className='MyTextInput__label' htmlFor={props.id || props.name}>{label}</label>
+            <label className='MyTextInput__label' htmlFor={props.name}>{label}</label>
             <input className="MyTextInput__input" {...field} {...props} />
             {meta.touched && meta.error ? (
                 <p className="MyTextInput__error">{meta.error}</p>
@@ -13,9 +21,13 @@ export const MyTextInput = ({ label, ...props }) => {
     );
 };
 
+interface MyCheckboxProps {
+    children: React.ReactNode;
+    name: string;
+}
+type TMyCheckbox=(props: MyCheckboxProps) => JSX.Element
 
-
-export const MyCheckbox = ({ children, ...props }) => {
+export const MyCheckbox:TMyCheckbox = ({ children, ...props }) => {
     const [field, meta] = useField({ ...props, type: 'checkbox' });
     return (
         <div>
@@ -31,12 +43,17 @@ export const MyCheckbox = ({ children, ...props }) => {
 };
 
 
-
-export const MySelect = ({ label, ...props }) => {
+interface MySelectProps {
+    label: string;
+    name: string;
+    options: string[];
+}
+type TMySelect=(props: MySelectProps) => JSX.Element
+export const MySelect:TMySelect = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
         <div>
-            <label htmlFor={props.id || props.name}>{label}</label>
+            <label htmlFor={props.name}>{label}</label>
             <select {...field} {...props} />
             {meta.touched && meta.error ? (
                 <div className="error">{meta.error}</div>
@@ -44,8 +61,16 @@ export const MySelect = ({ label, ...props }) => {
         </div>
     );
 };
+interface RutInputProps {
+    label: string;
+    name: string;
+    type: string;
+    ruts: string[];
+    setruts: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
-export const RutInput = ({ label, ...props }) => {
+type TRutInput=(props: RutInputProps) => JSX.Element
+export const RutInput:TRutInput = ({ label, ...props }) => {
     const { name, type, ruts, setruts } = props
     const [field, meta] = useField({ name, type });
     const { value, onBlur, onChange } = field;
@@ -59,7 +84,7 @@ export const RutInput = ({ label, ...props }) => {
 
     return (
         <div className='MyTextInput__container'>
-            <label className='MyTextInput__label' htmlFor={props.id || props.name}>{label}</label>
+            <label className='MyTextInput__label' htmlFor={ props.name}>{label}</label>
             <div>
                 <input
                     className="MyTextInput__input"

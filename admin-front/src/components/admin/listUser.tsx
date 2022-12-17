@@ -29,6 +29,10 @@ function User({ user }: { user: UserAPI }) {
         <Stack>
             <CardBody>
                 <Text >{user.email}</Text>
+                <Text >{user.displayName}</Text>
+                <UnorderedList>
+                    {user.ruts.map((rut) => <ListItem key={rut}>{rut}</ListItem>)}
+                </UnorderedList>
                 <Button variant='solid' colorScheme='purple'>edit</Button>
             </CardBody>
         </Stack>
