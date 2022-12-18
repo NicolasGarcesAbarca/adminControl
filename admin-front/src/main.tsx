@@ -12,7 +12,7 @@ import ErrorPage from './ErrorPage';
 import { LoginPage } from './components/pages/LoginPage';
 import { CreateUser } from './components/pages/CreateUser';
 import { ProvideUser } from './hooks/user';
-import { ChakraProvider,extendTheme } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { AllowOnlyAdmin } from './components/pages/AllowOnlyAdmin';
 
 const colors = {
@@ -55,11 +55,11 @@ const router = createBrowserRouter([
 
 ]);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <ProvideUser>
-        <RouterProvider router={router} />
-      </ProvideUser>
-    </ChakraProvider >
-  </React.StrictMode> 
+
+  <ChakraProvider theme={theme}>
+    <ProvideUser>
+      <RouterProvider router={router} />
+    </ProvideUser>
+  </ChakraProvider >
+
 )
