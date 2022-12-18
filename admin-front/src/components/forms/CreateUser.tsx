@@ -59,7 +59,7 @@ export const CreateUserForm = () => {
     //function for create user through firebase cloud function
     async function createUser(values: IValues, actions: FormikHelpers<IValues>): Promise<void> {
         const { displayName, email, password} = values;
-        const url = 'http://127.0.0.1:5001/remind23451/us-central1/api/users'
+        const url = 'https://us-central1-remind23451.cloudfunctions.net/api/users'
         const accessToken = user ? user.accessToken : '';
         const data = { displayName, email, password ,ruts}
         const config = {
