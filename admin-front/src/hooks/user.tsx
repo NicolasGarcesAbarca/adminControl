@@ -49,35 +49,42 @@ const Usr = z.object({
 })
 
 type Usr = z.infer<typeof Usr>
-interface TUserContext{
+interface TUserContext {
     user: Usr | null;
     userIsLoading: boolean;
 }
 
 
-export const userContext = createContext<TUserContext>({user:null,userIsLoading:true})
+export const userContext = createContext<TUserContext>({ user: null, userIsLoading: true })
 
 export function ProvideUser(props: TT) {
     const [user, setUser] = useState<Usr | null>(null)
     const [userLoading, setUserLoading] = useState(true)
     //add on auth state change
     useEffect(() => {
-        return () => {
-            onAuthStateChanged(auth, async (fbUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+            console.log("onAuthStateChanged executed")
+            try {
                 if (fbUser) {
                     const validUser = Usr.parse(fbUser)
-                    console.log(validUser.accessToken)
                     const idTokenResult = await fbUser.getIdTokenResult(true);
                     if (idTokenResult.claims.role) {
                         validUser.role = idTokenResult.claims.role;
                     }
+                    console.log("validUser", validUser)
+                    console.log("user is gonnabe setted")
                     setUser(validUser)
+                    setUserLoading(false)
                 } else {
+                    console.log("user is gonnabe setted to null")
                     setUser(null)
                 }
-                setUserLoading(false)
-            })
-        }
+            }catch(e){
+                console.log("error on auth", e)
+            }
+            
+        })
+        return unsubscribe
     }, [])
 
     return (

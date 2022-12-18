@@ -31,6 +31,7 @@ export default function Navbar() {
         <header className="nav" >
             <div className="nav__logo">
                 <p>LOGO</p>
+                {role ? <p>{role}</p>:<p>no user</p>}
             </div>
             <nav>
                 <UlbyRole role={role} />
