@@ -40,13 +40,7 @@ export function UserDetail({ userInfo }: { userInfo: UserAPI }) {
             };
             const url = `https://us-central1-remind23451.cloudfunctions.net/api/users/${userInfo.uid}`
             try {
-                console.log("saving changes")
-                console.log("data", data)
-                console.log("config", config)
-                console.log("url", url)
-                const resp = await axios.patch(url, data, config)
-                console.log(resp)
-                console.log("changes saved")
+                const _resp = await axios.patch(url, data, config)
             } catch (e) {
                 console.log(e)
             }
@@ -57,6 +51,7 @@ export function UserDetail({ userInfo }: { userInfo: UserAPI }) {
         overflow='hidden'
     >
         <Stack>
+            {/**TODO: move inputs to formik + validation */}
             <HStack>
                 <Text >email: </Text>
                 <input value={email} onChange={(e) => { setEmail(e.target.value) }} />
