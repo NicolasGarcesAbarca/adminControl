@@ -22,8 +22,6 @@ interface IErrors {
 }
 
 
-
-
 export const CreateUserForm = () => {
     //use state for list ruts management
     
@@ -67,11 +65,7 @@ export const CreateUserForm = () => {
         };
 
         try {
-            console.log("data before post")
-            console.log(data)
             const response = await axios.post(url, data, config);
-            console.log("response axios")
-            console.log(response.data);
             toast({
                 title: 'Usuario Creado.',
                 description: "Verifica en la lista.",

@@ -3,6 +3,7 @@ import ListUser from "./listUser"
 import { Box } from '@chakra-ui/react'
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+
 export interface UserAPI {
     uid: string,
     displayName: string,

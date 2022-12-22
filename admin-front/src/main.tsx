@@ -8,6 +8,7 @@ import {
 import Root from "./routes/root";
 import Admin from './components/admin/admin';
 import User from './components/admin/users';
+import { UpdateUser } from './components/pages/UpdateUser';
 import ErrorPage from './ErrorPage';
 import { LoginPage } from './components/pages/LoginPage';
 import { CreateUser } from './components/pages/CreateUser';
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
           {
             path: "createuser/",
             element: <CreateUser />
+          },
+          {
+            path: "user/:userId",
+            element: <UpdateUser />
           }
         ]
       },
