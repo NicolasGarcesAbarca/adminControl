@@ -89,6 +89,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-family: "NunitoSans";
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -150,7 +151,6 @@ table {
   font-style: italic;
 }
 
-
 @font-face {
   font-family: "NunitoSans";
   src: url(./fonts/NunitoSans-Light.ttf) format("truetype");
@@ -161,10 +161,9 @@ table {
 body {
   margin: 0;
   padding: 0;
-  font-family: "NunitoSans", sans-serif;
 }
 /*app container */
-.app-container{
+.app-container {
   display: flex;
   flex-direction: column;
 }
@@ -177,7 +176,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color:#021e5f;
+  background-color: #021e5f;
   color: white;
 }
 
@@ -195,7 +194,7 @@ body {
   margin-left: 10px;
   padding: 5px;
 }
-.nav__ul__li__link{
+.nav__ul__li__link {
   text-decoration: none;
   color: white;
   font-weight: 600;
@@ -203,7 +202,7 @@ body {
 /* forms */
 
 .form {
-  display: flex;  
+  display: flex;
   flex-direction: column;
 }
 .MyTextInput__container {
@@ -212,28 +211,28 @@ body {
   gap: 6px;
   margin-bottom: 10px;
 }
-.MyTextInput__input{
+.MyTextInput__input {
   border: 1px solid rgb(180, 180, 180);
   border-radius: 4px;
   font-size: 1.2rem;
 }
 
-.MyTextInput__label{
-  color:rgb(100, 100, 100)
+.MyTextInput__label {
+  color: rgb(100, 100, 100);
 }
-.MyTextInput__error{
-  color:rgb(219, 51, 51);
+.MyTextInput__error {
+  color: rgb(219, 51, 51);
   font-size: small;
 }
 
-.MyTextInput__button{
-  border:1px solid rgb(180, 180, 180);
+.MyTextInput__button {
+  border: 1px solid rgb(180, 180, 180);
   cursor: pointer;
   border-radius: 4px;
   width: 40px;
 }
 
-.MyTextInput__button:hover{
+.MyTextInput__button:hover {
   background-color: rgb(170, 92, 92);
 }
 /* card */
@@ -244,7 +243,7 @@ body {
   border-radius: 5px;
   padding: 10px;
 }
-.card--dark{
+.card--dark {
   background-color: hsl(220, 50%, 70%);
 }
 .card--w60 {
@@ -252,21 +251,21 @@ body {
 }
 
 /* button */
-.button{
-  background-color:#021e5f;
+.button {
+  background-color: #021e5f;
   border-radius: 10px;
-  padding:10px;
+  padding: 10px;
   color: white;
   border-style: none;
 }
 
-.button--danger{
-  background-color: hsl(20,60%,50%);
+.button--danger {
+  background-color: hsl(20, 60%, 50%);
   font-weight: 700;
 }
 
 /* Login page */
-.LoginPage__container{
+.LoginPage__container {
   display: flex;
   justify-content: center;
   margin-top: 10rem;
