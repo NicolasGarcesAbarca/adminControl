@@ -1,3 +1,4 @@
+import { OrangeIcon } from "../assets/orange";
 import { Link } from "react-router-dom";
 import { userContext } from "../hooks/user";
 import { useContext } from "react";
@@ -9,7 +10,7 @@ function UlbyRole({ role }: { role: string }) {
 
     if (role) {
         if (role === 'admin') {
-            items = [...items, { name: 'list', path: '/admin/user' },{ name: 'create', path: '/admin/createuser' }]
+            items = [...items, { name: 'list', path: '/admin/user' }, { name: 'create', path: '/admin/createuser' }]
         } else if (role === 'user') {
             items = [...items, { name: 'user', path: '/admin/' }]
         }
@@ -26,12 +27,14 @@ function UlbyRole({ role }: { role: string }) {
 
 export default function Navbar() {
     const { user } = useContext(userContext)
-    const role = user ? (user.role? user.role:'') : ''
+    const role = user ? (user.role ? user.role : '') : ''
     return (
         <header className="nav" >
             <div className="nav__logo">
-                <p>LOGO</p>
-                {role ? <p>{role}</p>:<p>no user</p>}
+                {/* link to home*/}
+                <a href="/">
+                    <OrangeIcon />
+                </a>
             </div>
             <nav>
                 <UlbyRole role={role} />

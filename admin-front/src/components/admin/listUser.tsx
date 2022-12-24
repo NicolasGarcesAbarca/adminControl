@@ -1,17 +1,34 @@
-import { UserAPI } from "./users"
-import { Card, Stack, CardBody, Text, Button, Flex, UnorderedList, ListItem } from '@chakra-ui/react'
+import { UserAPI } from "../pages/ListUser"
+import { BsTrash } from "react-icons/bs";
+import {
+    Avatar,
+    Text,
+    Flex,
+    UnorderedList,
+    ListItem,
+    Divider,
+    HStack,
+    IconButton,
+} from '@chakra-ui/react'
 
 export default function ListUser(props: { users: Array<UserAPI> }) {
     return (
-        <Flex width='100%'>
-            <UnorderedList width="100%" mx={6} style={{listStyleType:'none'}}>
+        <Flex
+            w={'100%'}
+            mt={4}
+        >
+            <UnorderedList
+                w={"100%"}
+                listStyleType={'none'}
+                marginInlineStart={0}
+            >
                 {props.users.map((user) => {
                     return (
-                        <ListItem 
+                        <ListItem
                             key={user.uid}
-                            mb={4}
                         >
                             <User user={user} />
+                            <Divider color={'gray.300'} />
                         </ListItem>
                     )
                 }
@@ -22,19 +39,27 @@ export default function ListUser(props: { users: Array<UserAPI> }) {
 }
 
 function User({ user }: { user: UserAPI }) {
-    return <Card
-        direction={{ base: 'column', sm: 'row' }}
+    return <Flex
         overflow='hidden'
+        alignItems={'center'}
+        justifyContent={'space-between'}
+        bg={'white'}
+        p={4}
     >
-        <Stack>
-            <CardBody>
-                <Text >{user.email}</Text>
-                <Text >{user.displayName}</Text>
-                <UnorderedList>
-                    {user.ruts.map((rut) => <ListItem key={rut}>{rut}</ListItem>)}
-                </UnorderedList>
-                <Button variant='solid' colorScheme='purple'>edit</Button>
-            </CardBody>
-        </Stack>
-    </Card>
+        <HStack
+            gap={4}
+        >
+            <Avatar size='md' name={user.displayName} />
+            <Flex
+                direction='column'
+            >
+                <Text fontSize={'lg'}>{user.email}</Text>
+                <Text fontSize={'sm'}>{user.displayName}</Text>
+            </Flex>
+        </HStack>
+        {/* <UnorderedList>
+            {user.ruts.map((rut) => <ListItem key={rut}>{rut}</ListItem>)}
+        </UnorderedList> */}
+        <IconButton aria-label='Search database' icon={<BsTrash/>} />
+    </Flex>
 }

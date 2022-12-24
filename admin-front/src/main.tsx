@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import Root from "./routes/root";
 import Admin from './components/admin/admin';
-import User from './components/admin/users';
 import { UpdateUser } from './components/pages/UpdateUser';
 import ErrorPage from './ErrorPage';
 import { LoginPage } from './components/pages/LoginPage';
 import { CreateUser } from './components/pages/CreateUser';
+import { UserList } from './components/pages/ListUser';
 import { ProvideUser } from './hooks/user';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { AllowOnlyAdmin } from './components/pages/AllowOnlyAdmin';
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "user/",
-            element: <User />
+            element: <UserList />
           },
           {
             path: "createuser/",

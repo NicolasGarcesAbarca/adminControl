@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-import { UserAPI } from '../admin/users';
+import { UserAPI } from '../pages/ListUser';
 import { useParams } from "react-router-dom";
 import { UserDetail } from "../admin/UserDetail";
 import { Spinner } from "@chakra-ui/react";

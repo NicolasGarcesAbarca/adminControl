@@ -175,6 +175,7 @@ body {
   z-index: 9999;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
   background-color: #021e5f;
   color: white;
@@ -189,6 +190,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50px;
+}
+.nav__logo a {
+  width: 40px;
+  overflow: hidden;
 }
 .nav__ul__li {
   margin-left: 10px;
@@ -269,4 +275,21 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 10rem;
+}
+
+/* svg orange */
+.svgorange_st0 {
+  fill: #e26b1b;
+}
+.svgorange_st1 {
+  fill: #feeace;
+}
+.svgorange_st2 {
+  fill: #fea832;
+}
+.svgorange_st3 {
+  fill: #fea832;
+  stroke: #fea832;
+  stroke-width: 0.216;
+  stroke-miterlimit: 2.6131;
 }

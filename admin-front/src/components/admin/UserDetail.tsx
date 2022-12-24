@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { userContext } from "../../hooks/user";
-import { UserAPI } from "./users";
+import { UserAPI } from "../pages/ListUser";
 import {
     Card,
     Stack,
