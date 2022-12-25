@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { BsSearch, BsPlus } from "react-icons/bs";
 import ListUser from "../admin/listUser"
+import { useNavigate } from "react-router-dom";
 import {
     Box,
     Center,
@@ -25,7 +26,7 @@ export function UserList() {
     const [users, setUsers] = useState<Array<UserAPI>>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
-
+    const navigate = useNavigate()
     useEffect(() => {
         console.log("useEffect")
         const getUsers = async () => {
@@ -81,6 +82,7 @@ export function UserList() {
                         <Button rightIcon={<BsPlus />}
                             colorScheme='green'
                             variant='solid'
+                            onClick={() => navigate('/admin/createUser')}
                         >
                             <Text pr={4}>Crear Usuario</Text>
                         </Button>
