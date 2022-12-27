@@ -21,8 +21,8 @@ export interface UserAPI {
     ruts: Array<string>,
 }
 
-const URL = "http://127.0.0.1:5001/remind23451/us-central1/api/users"
 export function UserList() {
+    const [search, setSearch] = useState<string>('')
     const [users, setUsers] = useState<Array<UserAPI>>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -92,6 +92,7 @@ export function UserList() {
                             variant='outline'
                             placeholder='Search user'
                             borderColor={'gray.400'}
+                            onChange={(e) => setSearch(e.target.value)}
                         />
                         <Center ml={2}>
                             <BsSearch />
@@ -101,7 +102,7 @@ export function UserList() {
                 <Box
                     w={['100%']}
                 >
-                    <ListUser users={users} />
+                    <ListUser users={users} search={search}/>
                 </Box>
             </Flex>
         </Flex> :

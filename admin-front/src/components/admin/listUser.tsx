@@ -1,3 +1,4 @@
+import { useEffect,useState } from "react";
 import { UserAPI } from "../pages/ListUser"
 import { BsTrash } from "react-icons/bs";
 import {
@@ -10,8 +11,15 @@ import {
     HStack,
     IconButton,
 } from '@chakra-ui/react'
+import {matchSorter} from 'match-sorter'
 
-export default function ListUser(props: { users: Array<UserAPI> }) {
+export default function ListUser(props: { users: Array<UserAPI> ,search: string}) {
+    const [filteredUsers, setFilteredUsers] = useState<Array<UserAPI>>([])
+    useEffect(() => {
+        //filter users
+        setFilteredUsers(matchSorter(props.users, props.search, { keys: ['displayName', 'email']} ))
+
+    }, [props.users, props.search])
     return (
         <Flex
             w={'100%'}
@@ -22,7 +30,7 @@ export default function ListUser(props: { users: Array<UserAPI> }) {
                 listStyleType={'none'}
                 marginInlineStart={0}
             >
-                {props.users.map((user) => {
+                {filteredUsers.map((user) => {
                     return (
                         <ListItem
                             key={user.uid}
