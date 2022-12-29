@@ -7,12 +7,12 @@ import {
     Center,
     Flex,
     Text,
-    IconButton,
     Input,
     Button,
 } from '@chakra-ui/react'
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import { StatusCards } from "../admin/listUserStatusCards";
 
 export interface UserAPI {
     uid: string,
@@ -28,7 +28,6 @@ export function UserList() {
     const [error, setError] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
-        console.log("useEffect")
         const getUsers = async () => {
             setError(false)
             setLoading(true)
@@ -45,7 +44,6 @@ export function UserList() {
                 setLoading(false)
             }
         }
-        console.log("getUsers")
         getUsers()
     }, [])
 
@@ -59,11 +57,8 @@ export function UserList() {
         >
             <Flex
                 w={['30%']}
-                border={'2px solid black'}
             >
-                <Center w={'100%'}>
-                    <Text color={'white'}>Users</Text>
-                </Center>
+                <StatusCards users={users}/>
             </Flex>
             <Flex
                 direction='column'
