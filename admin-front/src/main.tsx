@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
@@ -15,6 +14,7 @@ import { UserList } from './components/pages/ListUser';
 import { ProvideUser } from './hooks/user';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { AllowOnlyAdmin } from './components/pages/AllowOnlyAdmin';
+import { PdfPage } from './components/pages/PdfPage';
 
 const colors = {
   brand: {
@@ -54,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "login/",
         element: <LoginPage />
+      },
+      {
+        path:"pdf/",
+        element:<PdfPage />
       }
     ],
   },

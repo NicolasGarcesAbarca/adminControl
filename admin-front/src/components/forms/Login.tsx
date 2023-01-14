@@ -42,6 +42,7 @@ export const Login = () => {
             const userCredential = await signInWithEmailAndPassword(auth, emailx, passwordx);
             actions.setSubmitting(false)
             //TODO insert toast
+            console.log("credential signin in with email and password")
             console.log(userCredential)
             toast({
                 title: 'Login existoso.',
