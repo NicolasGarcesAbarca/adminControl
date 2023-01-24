@@ -15,6 +15,7 @@ import { ProvideUser } from './hooks/user';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { AllowOnlyAdmin } from './components/pages/AllowOnlyAdmin';
 import { PdfPage } from './components/pages/PdfPage';
+import { UploadFilePage } from './components/pages/UploadFile';
 
 const colors = {
   brand: {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path:"pdf/",
         element:<PdfPage />
+      },
+      {
+        path:"uploadFile/",
+        element:<UploadFilePage />
       }
     ],
   },
