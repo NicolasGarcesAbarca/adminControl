@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 function UlbyRole({ role }: { role: string }) {
     let items = [
-        { name: 'Home', path: '/' },
+        { name: 'Home', path: '/hi' },
         { name: 'LogIn', path: '/login' }]
 
     if (role) {
