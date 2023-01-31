@@ -8,11 +8,11 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "remind23451.firebaseapp.com",
-  projectId: "remind23451",
-  storageBucket: "remind23451.appspot.com",
-  messagingSenderId: "503331096209",
-  appId: "1:503331096209:web:6eed454f018a51ad0da130"
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 console.log("firebaseConfig", firebaseConfig);
 // Initialize Firebase
