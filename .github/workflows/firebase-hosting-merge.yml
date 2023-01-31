@@ -10,7 +10,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     env:
-      FIREBASE_API_KEY: "$APIKEY"
+      FIREBASE_API_KEY: '${{APIKEY}}'
     steps:
       - uses: actions/checkout@v2
       - run: npm i && npm run build
